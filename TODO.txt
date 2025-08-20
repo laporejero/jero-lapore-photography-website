@@ -1,0 +1,5 @@
+TODO LIST FOR THE PHOTOGRAPHY WEBSITE PROJECT
+
+- turn gallery into slideshow when in phone view
+- add more article for the journal page
+- add more photos for the gallery

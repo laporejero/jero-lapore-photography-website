@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/*
+-------------- TYPOGRAPHY --------------
+
+FONT SIZES
+12px / 16px / 20px / 24px / 32px / 40px / 48px / 62px
+
+FONT WEIGHTS
+400 / 700
+
+LINE HEIGHTS
+1.2 / 1.5
+
+LETTER SPACING
+0 / -2px
+
+FONT FAMILY
+Headings: "Libre Baskerville", serif
+body text: "Lora", serif
+
+-------------- COLORS --------------
+NAV
+Background: #111
+Text color: #111
+
+HOMEPAGE
+Background: #f5f5f5
+Color: #222
+
+GALLERY
+Background: #1a1a1a
+Color: #f0f0f0
+Border: 2px solid #333
+
+ABOUT
+Background: #ffffff
+Color: #111
+*/
+
+/* ------------------------- GLOBAL STYLES ------------------------- */
+
+:root {
+    /* FONT SIZE */
+    --text-sm: 1.4rem;
+    --text-base: 1.6rem;
+    --text-paragraph: 2rem;
+    --text-h5: 2.4rem;
+    --text-h4: 3.2rem;
+    --text-h3: 4rem;
+    --text-h2: 4.8rem;
+    --text-h1: 6.2rem;
+
+    /* FONT WEIGHTS */
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* LINE HEIGHT */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+
+    /* LETTER SPACING */
+    --letter-spacing-tight: -0.5px;
+
+    /* FONT FAMILY */
+    --font-family-heading: "Libre Baskerville", serif;
+    --font-family-body: "Lora", serif;
+
+    /* COLORS */
+    --nav-bg: #181818;
+    --nav-text-color: white;
+    --home-bg: #f5f5f5;
+    --home-text-color: #222;
+    /* --gallery-bg: #1a1a1a; */
+    --gallery-bg: #181818;
+    --gallery-text-color: #f0f0f0;
+    --about-bg: #f5f5f5;
+    --about-text-color: #111;
+
+    /* MISCELLANEOUS */
+    --nav-height: 100px;
+    --footer-height: 5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* 10px */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    font-family: var(--font-family-heading);
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+    font-size: var(--text-h1);
+}
+h2 {
+    font-size: var(--text-h2);
+}
+h3 {
+    font-size: var(--text-h3);
+}
+h4 {
+    font-size: var(--text-h4);
+}
+h5 {
+    font-size: var(--text-h5);
+}
+
+a {
+    text-decoration: none;
+    font-size: var(--text-paragraph);
+    display: inline-block;
+    color: var(--home-text-color);
+}
+
+p {
+    font-size: var(--text-paragraph);
+}
+
+ul {
+    list-style: none;
+}
+
+span {
+    display: inline-block;
+}
+
+.small-text {
+    font-size: var(--text-sm);
+}
+
+.margin-top {
+    margin-top: 3rem;
+}
+
+.margin-bottom {
+    margin-bottom: 3rem;
+}
+
+.back-to-top {
+    font-size: var(--text-paragraph);
+    display: block;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.back-to-top:hover {
+    opacity: 0.7;
+}
+
+/* -------------------- SECTIONS -------------------- */
+
+/* ---------- NAVBAR ---------- */
+header {
+    background-color: var(--home-bg);
+    color: var(--home-text-color);
+}
+
+.navbar {
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-link-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link-container a:hover {
+    opacity: 0.8;
+}
+
+/* -------------------- HOMEPAGE -------------------- */
+.home-section {
+    background-color: var(--home-bg);
+    height: calc(100vh - var(--nav-height));
+}
+
+.home-container {
+    height: calc(100vh - var(--nav-height) - var(--footer-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-img {
+    max-width: 100rem;
+    width: 100%;
+}
+
+.home-container p {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.slideshow {
+    position: relative;
+    max-width: 100rem;
+    width: 100%;
+    height: 68.5vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.slide img {
+    max-height: 100%;     /* never taller than slideshow */
+    max-width: 100%;      /* never wider than slideshow */
+    object-fit: contain;  /* keep full image inside */
+    display: block;
+    margin: auto;
+}
+
+/* Fade animation */
+.fade {
+    animation: fadeEffect 1s;
+}
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+/* Prev & Next buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    user-select: none;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.4);
+    /* border-radius: 50%; */
+}
+
+.prev:hover, .next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* -------------------- GALLERY -------------------- */
+.gallery-header, .gallery-section {
+    background-color: var(--gallery-bg);
+    color: var(--gallery-text-color);
+}
+
+.gallery-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.grid-3-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 90%;
+    margin: 1.5rem auto 0;
+    align-items: stretch;
+}
+
+.gallery-grid-container img, .grid-3-columns img {
+    /* height: auto; */
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Wrap images in divs to let them fill the grid cell */
+.horizontal-wrapper,
+.vertical-wrapper {
+    overflow: hidden;
+}
+
+.horizontal-wrapper img,
+.vertical-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ← Crop the image to fill */
+}
+
+.horizontal-wrapper img:hover,
+.vertical-wrapper img:hover {
+  object-fit: contain;
+}
+
+/* Span */
+.span-1 {
+    grid-column: span 1;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+/* -------------------- JOURNAL -------------------- */
+.journal-section {
+    color: var(--home-text-color);
+    background-color: var(--home-bg);
+}
+
+.journal-section .container {
+    padding: 0 1rem;
+}
+
+.journal-container h3 {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.image-solo {
+    display: block;
+    margin: 3rem auto;
+    max-width: 80%; /* optional: keeps image responsive */
+    height: auto;
+}
+
+.journal-container h5 {
+    margin-bottom: 1rem;
+}
+
+.images-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    grid-template-rows: 1fr 1fr ;
+    max-width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+.images-grid-3 img, .images-grid-2 img {
+    /* display: block; */
+    margin: 3rem auto;
+    max-width: 90%; /* optional: keeps image responsive */
+    object-fit: cover;
+    height: auto;
+}
+
+.image-000003 {
+    grid-row: span 2;   
+}
+
+.images-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    max-width: 100%;
+    height: auto;
+}
+
+.journal-container:last-child {
+    padding-bottom: 4rem;
+}
+
+/* -------------------- ABOUT -------------------- */
+.about-section {
+    background-color: var(--about-bg);
+    color: var(--about-text-color);
+    height: calc(100vh - var(--nav-height));
+    
+}
+
+.about-grid-flex-container {
+    height: calc(100vh - var(--nav-height));
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.about-grid-container {
+    /* height: calc(100vh - var(--nav-height)); */
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    /* grid-template-rows: 3fr 1fr; */
+    max-width: 1400px;
+    align-items: center;
+    justify-items: center;
+    gap: 2rem;
+    margin-bottom: 10rem;
+
+    grid-template-areas: "image paragraph"
+                         "image links";
+}
+
+.about-grid-container img {
+    grid-area: image;
+    width: 90%;
+    height: auto;
+}
+
+.about-paragraph {
+    grid-area: paragraph;
+    align-self: flex-end;
+}
+
+.about-social-links {
+    grid-area: links;
+    /* display: inline-block; */
+    /* width: 100%;
+    text-align: center; */
+    margin-top: 5rem;
+    align-self: start;
+    gap: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-social-links div a {
+    color: var(--about-text-color);
+}
+
+.social-item {
+    width: 3.5rem;
+}
+
+/* -------------------- FOOTER -------------------- */
+.footer {
+    height: var(--footer-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--text-sm);
+}
