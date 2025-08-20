@@ -104,9 +104,16 @@
     } */
 
     /* HOMEPAGE */
+    .home-section {
+        min-height: calc(100vh - var(--nav-height)); /* ensures full height */
+        height: auto; /* allow it to grow if content overflows */
+    }
+
     .home-container {
         height: auto;
         margin-bottom: 5rem;
+        min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+        height: auto;
     }
 
     .slideshow {
@@ -123,5 +130,15 @@
     .navbar {
         flex-direction: column;
         justify-content: space-evenly;
+    }
+
+    .about-section {
+        height: calc(100vh - var(--nav-height));
+        height: auto;
+    }
+
+    .about-grid-flex-container {
+        height: calc(100vh - var(--nav-height));
+        height: auto;
     }
 }
